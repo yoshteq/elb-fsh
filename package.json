@@ -1,0 +1,17 @@
+{
+  "name": "yoshteq_elb",
+  "version": "1.0.0",
+  "description": "FHIR Resources for eLB interfaces - reloaded",
+  "main": "index.js",
+  "scripts": {
+    "convert-profiles": "rm -rf .tmp && mkdir .tmp\\gofsh && mkdir .tmp\\src && cp eLB/*.xml .tmp/src/ && gofsh .tmp/src/ -o .tmp/gofsh -t xml-only -d de.basisprofil.r4@1.4.0 && cp -rf .tmp/gofsh/input/fsh/* yoshteq_eLB/input/fsh/ && rm -rf .tmp && sed -i 's/part contains invoiceReference 1\\.\\.1 MS$/part contains invoiceReference 1\\.\\.1 MS and Container 1\\.\\. MS/g' yoshteq_eLB/input/fsh/profiles/KK_ELB_BillingContainerParameters.fsh",
+    "create-sushi-menu": "sushi build yoshteq_eLB",
+    "full-run": "npm run convert-profiles && npm run create-sushi-menu"
+  },
+  "author": "yoshteq GmbH & Co. KG",
+  "license": "ISC",
+  "devDependencies": {
+    "fsh-sushi": "^3.0.0",
+    "gofsh": "^2.0.0"
+  }
+}

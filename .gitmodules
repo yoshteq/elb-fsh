@@ -1,0 +1,3 @@
+[submodule "eLB"]
+	path = eLB
+	url = https://github.com/ITSGGMBH/eLB.git
